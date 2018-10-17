@@ -37,8 +37,8 @@ public class Main {
 		// System.out.println(findByLicense("Bohdan456", allVehicles));
 		// System.out.println(findMaxPassengers(allVehicles));
 		// System.out.println(returnAverageCapacity(allVehicles));
-		// System.out.println(returnBothCarAndBicycleOwner(allOwners));
-		System.out.println(returnVehicleCoOwners(allVehicles));
+		System.out.println(returnBothCarAndBicycleOwner2(allOwners));
+		// System.out.println(returnVehicleCoOwners(allVehicles));
 	}
 	
 	static public String returnAllOwners(Set<Vehicle> allVehicles) {
@@ -69,6 +69,9 @@ public class Main {
 				if (((PassengerCar) car).getMaxPassengers() > max) {
 					max = ((PassengerCar) car).getMaxPassengers();
 					tempLicense = car.license;
+					if (((PassengerCar) car).getMaxPassengers() == max) {
+						tempLicense += car.license;
+					}
 				}
 			}
 		}
@@ -108,6 +111,28 @@ public class Main {
 			}
 		}
 		return "No such owner";
+	}
+	
+	static public String returnBothCarAndBicycleOwner2(Set<Owner> allOwners) {
+		String currOwner = null;
+		for (Owner owner : allOwners) {
+			int bikeCounter = 0;
+			int carCounter = 0;
+			if (owner.getOwnedVehicles()
+					.size() > 1) {
+				for (Vehicle vehicle : owner.getOwnedVehicles()) {
+					if (vehicle instanceof Bicycle) {
+						bikeCounter++;
+					} else if (vehicle instanceof PassengerCar) {
+						carCounter++;
+					}
+				}
+			}
+			if (bikeCounter >= 1 && carCounter >= 1) {
+				currOwner = owner.toString();
+			}
+		}
+		return currOwner;
 	}
 	
 	static public String returnVehicleCoOwners(Set<Vehicle> allVehicles) {

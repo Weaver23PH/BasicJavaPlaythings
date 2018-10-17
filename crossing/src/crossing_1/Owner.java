@@ -40,27 +40,44 @@ public class Owner {
 		this.OwnedVehicles.add(vehicle);
 	}
 	
-	public double returnAverageCapacity() {
-		double avgCapacity = 0;
-		int counter = 0;
-		for (Vehicle car : OwnedVehicles) {
-			if (car.isMotor()) {
-				counter++;
-				avgCapacity += (((MotorCar) car).getCapacity());
-			}
-		}
-		return avgCapacity / counter;
+	public String getOwnerID() {
+		return ownerID;
 	}
 	
-	public String findByLicense(String license) {
-		for (Vehicle car : OwnedVehicles) {
-			if (car.isMotor()) {
-				if (car.license == license) {
-					return "Vehicle [  Owner=" + car.getOwner() + ", capacity=" + ((MotorCar) car).getCapacity() + "l" + ", fuelType=" + ((MotorCar) car).getFuelType() + " ] ";
-				}
-			}
-		}
-		return "no such vehicle";
+	public void setOwnerID(String ownerID) {
+		this.ownerID = ownerID;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+	
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	public Set<Vehicle> getOwnedVehicles() {
+		return OwnedVehicles;
+	}
+	
+	public void setOwnedVehicles(Set<Vehicle> ownedVehicles) {
+		OwnedVehicles = ownedVehicles;
 	}
 	
 }
