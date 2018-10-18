@@ -9,8 +9,9 @@ public class Main {
 		Set<Vehicle> allVehicles = new HashSet<Vehicle>();
 		Set<Owner> allOwners = new HashSet<Owner>();
 		Bicycle stefek = new Bicycle("Stefek666", "kolażówka");
-		PassengerCar krzysiu = new PassengerCar("Krzysiu123", 2.0, "e98", 5, 5);
-		PassengerCar tomek = new PassengerCar("Tomek789", 1.3, "e98", 3, 4);
+		PassengerCar krzysiu = new PassengerCar("Krzysiu123", 2.0, "diesel", 5, 5);
+		PassengerCar tomek = new PassengerCar("Tomek789", 0.9, "e98", 3, 4);
+		PassengerCar edek = new PassengerCar("Edek902", 1.5, "e98", 5, 4);
 		Lorry bohdan = new Lorry("Bohdan456", 3.0, "diesel", 200, 150);
 		Owner benek = new Owner("1", "Benek", "Nowak", 55);
 		Owner tadek = new Owner("2", "Tadek", "Nowak", 65);
@@ -18,64 +19,50 @@ public class Main {
 		allVehicles.add(tomek);
 		allVehicles.add(krzysiu);
 		allVehicles.add(stefek);
+		allVehicles.add(edek);
 		allOwners.add(tadek);
 		allOwners.add(benek);
 		
 		stefek.addOwner(tadek);
 		krzysiu.addOwner(tadek);
+		edek.addOwner(tadek);
 		
 		benek.addVehicle(bohdan);
 		benek.addVehicle(tomek);
 		benek.addVehicle(krzysiu);
 		
-		// System.out.println(tadek.showOwnedVehicles());
-		// System.out.println(benek.showOwnedVehicles());
-		// System.out.println(benek.returnAverageCapacity());
-		// System.out.println(tadek.returnAverageCapacity());
-		// System.out.println(stefek.showVehicleOwners());
-		// System.out.println(returnAllOwners(allVehicles));
-		// System.out.println(findByLicense("Bohdan456", allVehicles));
-		// System.out.println(findMaxPassengers(allVehicles));
-		// System.out.println(returnAverageCapacity(allVehicles));
+		System.out.println(returnAllOwners(allVehicles));
+		System.out.println(findByLicense("Bohdan456", allVehicles));
+		System.out.println(findMaxPassengers(allVehicles));
+		System.out.println(returnAverageCapacity(allVehicles));
 		System.out.println(returnBothCarAndBicycleOwner2(allOwners));
-		// System.out.println(returnVehicleCoOwners(allVehicles));
+		System.out.println(returnVehicleCoOwners(allVehicles));
 	}
 	
 	static public String returnAllOwners(Set<Vehicle> allVehicles) {
-		String currOwners = null;
+		Set<Owner> owners = new HashSet<Owner>();
 		for (Vehicle vehicle : allVehicles) {
-			if (currOwners != (vehicle.getOwner()
-					.toString())) {
-				currOwners = vehicle.getOwner()
-						.toString();
-			}
-			if (currOwners.length() < vehicle.getOwner()
-					.toString()
-					.length()) {
-				return vehicle.getOwner()
-						.toString();
-			} else {
-				return currOwners;
+			for (Owner owner : vehicle.getOwner()) {
+				owners.add(owner);
 			}
 		}
-		return "nobody owns anything";
+		return owners.toString();
 	}
 	
 	static public String findMaxPassengers(Set<Vehicle> allVehicles) {
 		int max = 0;
 		String tempLicense = null;
+		Set<String> allLicenses = new HashSet<String>();
 		for (Vehicle car : allVehicles) {
 			if (car instanceof PassengerCar) {
-				if (((PassengerCar) car).getMaxPassengers() > max) {
+				if (((PassengerCar) car).getMaxPassengers() >= max) {
 					max = ((PassengerCar) car).getMaxPassengers();
 					tempLicense = car.license;
-					if (((PassengerCar) car).getMaxPassengers() == max) {
-						tempLicense += car.license;
-					}
+					allLicenses.add(tempLicense);
 				}
 			}
 		}
-		return tempLicense;
+		return allLicenses.toString();
 	}
 	
 	static public String findByLicense(String license, Set<Vehicle> allVehicles) {

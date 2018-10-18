@@ -24,10 +24,7 @@ public class Lorry extends MotorCar {
 	}
 	
 	public boolean canCarry(double currentLoad) {
-		if (currentLoad <= maxLoad) {
-			return true;
-		}
-		return false;
+		return (currentLoad <= maxLoad);
 	}
 	
 	@Override
