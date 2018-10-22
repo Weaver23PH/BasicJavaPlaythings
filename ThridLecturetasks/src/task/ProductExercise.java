@@ -2,12 +2,9 @@ package task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProductExercise {
-	
-	// private static Category FOOD;
-	// private static Category COSMETICS;
-	// private static Category OTHER;
 	
 	public static void main(String[] args) {
 		ArrayList<Product> allProducts = new ArrayList<Product>();
@@ -33,6 +30,7 @@ public class ProductExercise {
 		allProducts.add(penknife);
 		// System.out.println(allProducts.toString());
 		displayProducts(allProducts);
+		displayProductsStream(allProducts);
 		System.out.println(returnSameCategory(allProducts, Category.FOOD));
 		
 	}
@@ -45,6 +43,12 @@ public class ProductExercise {
 		
 	}
 	
+	static public void displayProductsStream(ArrayList<Product> allProducts) {
+		allProducts.stream()
+				.forEach(System.out::println);
+		
+	}
+	
 	static public String returnSameCategory(List<Product> allProducts, Category category) {
 		List<Product> returnedProducts = new ArrayList<Product>();
 		for (Product product : allProducts) {
@@ -53,5 +57,12 @@ public class ProductExercise {
 			}
 		}
 		return returnedProducts.toString();
+	}
+	
+	static public String returnSameCategoryStream(List<Product> allProducts, Category category) {
+		return allProducts.stream()
+				.filter(product -> product.getCategory() == category)
+				.collect(Collectors.toList())
+				.toString();
 	}
 }

@@ -1,0 +1,16 @@
+1. W klasie Exercise3_1:
+	a. Stwórz String-a za pomocą dwóch zapisów (new String() i zwykły) z wiadomością – „Hello String!”. Wyświetl obie wiadomości
+	b. Utwórz metodę która będzie dodawała taką samą wartość jak podany parametr, tylko wielkimi literami.Przykład: addUpperCasedString(„tekst”) // tekst TEKST
+	c. Stwórz metodę, która będzie szukała pierwszej litery „a”, następnie będzie zwracała wartość od tej litery do końca Stringu.Przykład:cutStringfromAChar(„Część praktyczna”) // aktyczna
+
+2. W klasie Exercise3_2:
+	a. Stwórz metodę która będzie przyjmować String jako parametr i zwracać:
+		- true jeśli dany String będzie palindromem, 
+		- false, jeśli dany String nie będzie palindromem. 
+	->Użyj StringBuildera i metody reverse()
+
+3. W klasie Exercise3_2:
+	a. Stwórz metodę która będzie przyjmować liczbę iteracji i dowolny String jako parametry.
+	b. W środku metody utwórz pętlę for w której będzięsz rozszerzać Stringa o kolejne i 
+	-> Użyj StringBuildera i metody append().	
+	Przykład wywołania: addToString(4, “ala ma kota”) wynik: ala ma kota1234

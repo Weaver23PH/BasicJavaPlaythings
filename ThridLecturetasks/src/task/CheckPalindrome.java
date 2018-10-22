@@ -2,13 +2,13 @@ package task;
 
 public class CheckPalindrome {
 	
-	public boolean CheckPalindromes(String checked) {
+	public boolean CheckPalindromes(String checked) throws PalindromeException {
 		checked = checked.replaceAll(" ", "")
 				.toLowerCase();
 		String checkedRev = new StringBuilder(checked).reverse()
 				.toString();
 		if (!checked.equals(checkedRev)) {
-			throw new RuntimeException("this is not a palindrome");
+			throw new PalindromeException();
 		}
 		return true;
 	}

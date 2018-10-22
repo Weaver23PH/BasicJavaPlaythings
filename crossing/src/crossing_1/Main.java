@@ -37,6 +37,7 @@ public class Main {
 		System.out.println(returnAverageCapacity(allVehicles));
 		System.out.println(returnBothCarAndBicycleOwner2(allOwners));
 		System.out.println(returnVehicleCoOwners(allVehicles));
+		
 	}
 	
 	static public String returnAllOwners(Set<Vehicle> allVehicles) {
@@ -88,20 +89,8 @@ public class Main {
 		return avgCapacity / counter;
 	}
 	
-	static public String returnBothCarAndBicycleOwner(Set<Owner> allOwners) {
-		for (Owner owner : allOwners) {
-			if (owner.OwnedVehicles.toString()
-					.contains("Bicycle")
-					&& (owner.OwnedVehicles.toString()
-							.contains("hasMotor=true"))) {
-				return owner.toString();
-			}
-		}
-		return "No such owner";
-	}
-	
 	static public String returnBothCarAndBicycleOwner2(Set<Owner> allOwners) {
-		String currOwner = null;
+		Set<Owner> selectedOwner = new HashSet<Owner>();
 		for (Owner owner : allOwners) {
 			int bikeCounter = 0;
 			int carCounter = 0;
@@ -116,10 +105,10 @@ public class Main {
 				}
 			}
 			if (bikeCounter >= 1 && carCounter >= 1) {
-				currOwner = owner.toString();
+				selectedOwner.add(owner);
 			}
 		}
-		return currOwner;
+		return selectedOwner.toString();
 	}
 	
 	static public String returnVehicleCoOwners(Set<Vehicle> allVehicles) {

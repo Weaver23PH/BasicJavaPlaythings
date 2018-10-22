@@ -20,10 +20,10 @@ public class GetDayOfWeek {
 			case 5:
 			case 6:
 			case 7:
-				return "Dziś jest: " + days.values()[day - 1];
+				return "Today: " + days.values()[day - 1];
 			
 			default:
-				return "Nie ma takiego dnia";
+				return "No such day";
 			
 		}
 	}

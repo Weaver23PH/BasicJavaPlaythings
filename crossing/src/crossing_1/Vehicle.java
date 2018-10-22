@@ -19,10 +19,7 @@ abstract public class Vehicle {
 	}
 	
 	public boolean isMotor() {
-		if (this.hasMotor) {
-			return true;
-		}
-		return false;
+		return (this.hasMotor);
 	}
 	
 	public String getLicense() {

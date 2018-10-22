@@ -11,7 +11,7 @@ public class PassengerCar extends MotorCar {
 	public PassengerCar(String license, double capacity, String fuelType, int maxPassengers, int currentPassengers) {
 		super(license, capacity, fuelType);
 		this.maxPassengers = maxPassengers;
-		this.setCurrentPassengers(currentPassengers);
+		this.currentPassengers = currentPassengers;
 	}
 	
 	public int getMaxPassengers() {
