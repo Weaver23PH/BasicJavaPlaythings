@@ -16,10 +16,6 @@ public class WashingMachineTester {
 		allAGD.add(beko1);
 		allAGD.add(amica1);
 		
-		System.out.println(amica1.getBrandName());
-		System.out.println(beko1.getBrandName());
-		System.out.println(whirlpool1.getBrandName());
-		
 		amica1.setProgramme(2);
 		amica1.previousProgramme();
 		amica1.setRotationSpeed(999);
@@ -59,7 +55,7 @@ public class WashingMachineTester {
 				.forEach(System.out::println);
 		allAGD.stream()
 				.sorted(Comparator.comparing(WashingMachine::getBrandName))
-				.forEach(System.out::println);
+				.forEach(WashingMachine::showStatus);
 		
 	}
 	
