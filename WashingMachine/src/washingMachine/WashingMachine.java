@@ -1,17 +1,33 @@
 package washingMachine;
 
 public abstract class WashingMachine {
-	private int	programme;
-	float		temperature;
-	int			rotationSpeed;
+	protected int	programme;
+	protected float	temperature;
+	protected int	rotationSpeed;
 	
 	public WashingMachine() {
+		this.programme = 0;
+		this.temperature = 0f;
+		this.rotationSpeed = 0;
 	}
 	
 	public WashingMachine(int programme, float temperature, int rotationSpeed) {
-		this.programme = programme;
-		this.temperature = temperature;
-		this.rotationSpeed = rotationSpeed;
+		if (rotationSpeed <= 1000) {
+			this.rotationSpeed = (int) ((Math.round(rotationSpeed / 100.0)) * 100);
+		} else {
+			this.rotationSpeed = 0;
+		}
+		if (temperature <= 90) {
+			this.temperature = temperature;
+		} else {
+			this.temperature = 0;
+		}
+		if (programme <= 20) {
+			this.programme = programme;
+		} else {
+			this.programme = 0;
+		}
+		
 	}
 	
 	public int getProgramme() {
@@ -19,7 +35,11 @@ public abstract class WashingMachine {
 	}
 	
 	public void setProgramme(int programme) {
-		this.programme = programme;
+		if (programme <= 20) {
+			this.programme = programme;
+		} else {
+			this.programme = 0;
+		}
 	}
 	
 	public float getTemperature() {
@@ -41,63 +61,68 @@ public abstract class WashingMachine {
 	}
 	
 	public void setRotationSpeed(int rotationSpeed) {
-		this.rotationSpeed = rotationSpeed;
-	}
-	
-	public int nextProgramme(int programme) {
-		if (programme < 20) {
-			programme++;
+		if (rotationSpeed <= 1000) {
+			this.rotationSpeed = (int) ((Math.round(rotationSpeed / 100.0)) * 100);
+		} else {
+			this.rotationSpeed = 0;
 		}
-		return programme;
 	}
 	
-	public int previousProgramme(int programme) {
-		if (programme > 0) {
-			programme--;
+	public int nextProgramme() {
+		if (this.programme < 20) {
+			this.programme++;
 		}
-		return programme;
+		return this.programme;
 	}
 	
-	public float tempUp(float temperature) throws WashingMachineException {
-		if (temperature < 90) {
-			temperature += 0.5;
-			System.out.println("Current temperature: " + temperature + "\u00b0 C");
-			return temperature;
+	public int previousProgramme() {
+		if (this.programme > 0) {
+			this.programme--;
+		}
+		return this.programme;
+	}
+	
+	public float tempUp() throws WashingMachineException {
+		if (this.temperature < 90) {
+			this.temperature += 0.5;
+			System.out.println("Current temperature: " + this.temperature + "\u00b0 C");
+			return this.temperature;
 		} else {
 			throw new WashingMachineException("The temperature is already at maximum");
 		}
 	}
 	
-	public float tempDown(float temperature) throws WashingMachineException {
-		if (temperature > 0) {
-			temperature += 0.5;
-			System.out.println("Current temperature: " + temperature + "\u00b0C");
-			return temperature;
+	public float tempDown() throws WashingMachineException {
+		if (this.temperature > 0) {
+			this.temperature -= 0.5;
+			System.out.println("Current temperature: " + this.temperature + "\u00b0C");
+			return this.temperature;
 		} else {
 			throw new WashingMachineException("The temperature is already at minimum");
 		}
 	}
 	
-	public int rotationSpeeedUp(int speed) {
-		if (speed < 1000) {
-			speed += 100;
+	public int rotationSpeeedUp() {
+		if (this.rotationSpeed < 1000) {
+			this.rotationSpeed += 100;
 		} else {
-			speed = 0;
+			this.rotationSpeed = 0;
 		}
-		return speed;
+		return this.rotationSpeed;
 	}
 	
-	public int rotationSpeedDown(int speed) {
-		if (speed > 0) {
-			speed -= 100;
+	public int rotationSpeedDown() {
+		if (this.rotationSpeed > 0) {
+			this.rotationSpeed -= 100;
 		} else {
-			speed = 1000;
+			this.rotationSpeed = 1000;
 		}
-		return speed;
+		return this.rotationSpeed;
 	}
 	
 	public void showStatus() {
 		System.out.println("Programme : " + this.programme + ", temperature: " + this.temperature + "\u00b0C , speed: " + this.rotationSpeed);
 	}
 	
+	abstract public String getBrandName();
 }
