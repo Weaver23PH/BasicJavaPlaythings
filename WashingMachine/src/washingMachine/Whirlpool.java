@@ -1,8 +1,7 @@
 package washingMachine;
 
 public class Whirlpool extends WashingMachine {
-	private String	brandName;
-	protected int	programme;
+	private String brandName;
 	
 	public Whirlpool() {
 		this.brandName = WashingMachineNames.WHIRLPOOL.getBrand();
@@ -12,7 +11,7 @@ public class Whirlpool extends WashingMachine {
 		return brandName;
 	}
 	
-	public Whirlpool(int programme, float temperature, int rotationSpeed) {
+	public Whirlpool(int programme) {
 		super();
 		if (programme <= 25) {
 			this.programme = programme;

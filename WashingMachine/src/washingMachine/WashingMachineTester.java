@@ -12,17 +12,17 @@ public class WashingMachineTester {
 		Beko beko1 = new Beko();
 		Whirlpool whirlpool1 = new Whirlpool();
 		
+		allAGD.add(whirlpool1);
 		allAGD.add(beko1);
 		allAGD.add(amica1);
-		allAGD.add(whirlpool1);
 		
 		System.out.println(amica1.getBrandName());
 		System.out.println(beko1.getBrandName());
 		System.out.println(whirlpool1.getBrandName());
 		
-		amica1.setProgramme(0);
+		amica1.setProgramme(2);
 		amica1.previousProgramme();
-		amica1.setRotationSpeed(1000);
+		amica1.setRotationSpeed(999);
 		amica1.rotationSpeeedUp();
 		amica1.setTemperature(90.0f);
 		amica1.showStatus();
@@ -31,7 +31,7 @@ public class WashingMachineTester {
 		} catch (WashingMachineException e) {
 			System.out.println(e.getMessage());
 		}
-		whirlpool1.setProgramme(24);
+		whirlpool1.setProgramme(23);
 		whirlpool1.nextProgramme();
 		whirlpool1.setRotationSpeed(0);
 		whirlpool1.rotationSpeedDown();
@@ -43,7 +43,7 @@ public class WashingMachineTester {
 			System.out.println(e.getMessage());
 		}
 		
-		beko1.setProgramme(24);
+		beko1.setProgramme(19);
 		beko1.nextProgramme();
 		beko1.setRotationSpeed(500);
 		beko1.rotationSpeedDown();

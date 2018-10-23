@@ -6,9 +6,7 @@ public abstract class WashingMachine {
 	protected int	rotationSpeed;
 	
 	public WashingMachine() {
-		this.programme = 0;
-		this.temperature = 0f;
-		this.rotationSpeed = 0;
+		
 	}
 	
 	public WashingMachine(int programme, float temperature, int rotationSpeed) {
@@ -121,7 +119,7 @@ public abstract class WashingMachine {
 	}
 	
 	public void showStatus() {
-		System.out.println("Programme : " + this.programme + ", temperature: " + this.temperature + "\u00b0C , speed: " + this.rotationSpeed);
+		System.out.println("Brand: " + getBrandName() + ", programme : " + this.programme + ", temperature: " + this.temperature + "\u00b0C , speed: " + this.rotationSpeed);
 	}
 	
 	abstract public String getBrandName();
