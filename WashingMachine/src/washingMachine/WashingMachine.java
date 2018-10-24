@@ -5,13 +5,13 @@ package washingMachine;
  */
 
 public abstract class WashingMachine {
-	protected int			programme;
-	protected float			temperature;
-	private int				rotationSpeed;
-	protected float			tempStep			= 0.5f;
-	protected int			maxProgramme		= 20;
-	final private int		maxRotationSpeed	= 1000;
-	final protected float	maxTemp				= 90.0f;
+	int					programme;
+	float				temperature;
+	private int			rotationSpeed;
+	float				tempStep			= 0.5f;
+	int					maxProgramme		= 20;
+	final private int	maxRotationSpeed	= 1000;
+	final float			maxTemp				= 90.0f;
 	
 	public WashingMachine() {
 		
