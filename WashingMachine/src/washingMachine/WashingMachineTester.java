@@ -11,10 +11,12 @@ public class WashingMachineTester {
 		Amica amica1 = new Amica();
 		Beko beko1 = new Beko();
 		Whirlpool whirlpool1 = new Whirlpool();
+		Whirlpool whirlpool2 = new Whirlpool(25, 10.0f, 500);
 		
 		allAGD.add(whirlpool1);
 		allAGD.add(beko1);
 		allAGD.add(amica1);
+		whirlpool2.showStatus();
 		
 		try {
 			amica1.setProgramme(2);

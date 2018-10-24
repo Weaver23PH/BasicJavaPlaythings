@@ -23,6 +23,13 @@ public abstract class WashingMachine {
 		this.programme = this.setProgramme(programme);
 	}
 	
+	public WashingMachine(int programme, float temperature, int rotationSpeed, int maxProgramme) {
+		this.maxProgramme = maxProgramme;
+		this.rotationSpeed = this.setRotationSpeed(rotationSpeed);
+		this.temperature = this.setTemperature(temperature);
+		this.programme = this.setProgramme(programme);
+	}
+	
 	public int getProgramme() {
 		return programme;
 	}
@@ -107,7 +114,7 @@ public abstract class WashingMachine {
 	public float tempUp() throws WashingMachineException {
 		if (this.temperature < maxProgramme) {
 			this.temperature += tempStep;
-			System.out.println("Current temperature: " + this.temperature + "\u00b0 C");
+			System.out.println("Current temperature: " + this.temperature + "\u00b0C");
 			return this.temperature;
 		} else {
 			throw new WashingMachineException("The temperature is already at maximum");

@@ -9,7 +9,7 @@ public class Whirlpool extends WashingMachine {
 	}
 	
 	public Whirlpool(int programme, float temperature, int rotationSpeed) {
-		super(programme, temperature, rotationSpeed);
+		super(programme, temperature, rotationSpeed, 25);
 		this.brandName = WashingMachineNames.WHIRLPOOL.getBrand();
 	}
 	
