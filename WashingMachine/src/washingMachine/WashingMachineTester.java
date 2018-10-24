@@ -11,22 +11,24 @@ public class WashingMachineTester {
 		Amica amica1 = new Amica();
 		Beko beko1 = new Beko();
 		Whirlpool whirlpool1 = new Whirlpool();
+		Whirlpool whirlpool2 = new Whirlpool(25, 10.0f, 500);
 		
 		allAGD.add(whirlpool1);
 		allAGD.add(beko1);
 		allAGD.add(amica1);
 		
-		amica1.setProgramme(2);
-		amica1.previousProgramme();
-		amica1.setRotationSpeed(999);
-		amica1.rotationSpeeedUp();
-		amica1.setTemperature(90.0f);
-		amica1.showStatus();
 		try {
+			amica1.setProgramme(2);
+			amica1.previousProgramme();
+			amica1.setRotationSpeed(999);
+			amica1.rotationSpeeedUp();
+			amica1.setTemperature(90.0f);
+			amica1.showStatus();
 			amica1.tempUp();
 		} catch (WashingMachineException e) {
 			System.out.println(e.getMessage());
 		}
+		
 		whirlpool1.setProgramme(23);
 		whirlpool1.nextProgramme();
 		whirlpool1.setRotationSpeed(0);
@@ -43,20 +45,35 @@ public class WashingMachineTester {
 		beko1.nextProgramme();
 		beko1.setRotationSpeed(500);
 		beko1.rotationSpeedDown();
-		beko1.setTemperature(10.3f);
+		beko1.setTemperature(10.7f);
 		beko1.showStatus();
 		try {
 			beko1.tempDown();
 		} catch (WashingMachineException e) {
 			System.out.println(e.getMessage());
 		}
-		
-		allAGD.stream()
-				.forEach(System.out::println);
-		allAGD.stream()
-				.sorted(Comparator.comparing(WashingMachine::getBrandName))
-				.forEach(WashingMachine::showStatus);
+		printAllMachines(allAGD);
+		sortAllMachines1(allAGD);
+		sortAllMachines2(allAGD);
 		
 	}
 	
+	static public void printAllMachines(List<WashingMachine> equipmentList) {
+		equipmentList.stream()
+				.forEach(System.out::println);
+	}
+	
+	static public void sortAllMachines1(List<WashingMachine> equipmentList) {
+		equipmentList.stream()
+				.sorted(Comparator.comparing(WashingMachine::getBrandName))
+				.forEach(WashingMachine::showStatus);
+	}
+	
+	static public void sortAllMachines2(List<WashingMachine> equipmentList) {
+		equipmentList.stream()
+				.sorted((wm1, wm2) -> wm1.getBrandName()
+						.compareTo(wm2.getBrandName()))
+				.forEach(WashingMachine::showStatus);
+		
+	}
 }

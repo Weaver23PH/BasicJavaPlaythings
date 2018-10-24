@@ -7,6 +7,10 @@ public class Amica extends WashingMachine {
 		this.brandName = WashingMachineNames.AMICA.getBrand();
 	}
 	
+	public Amica(int programme, float temperature, int rotationSpeed) {
+		super(programme, temperature, rotationSpeed);
+	}
+	
 	public String getBrandName() {
 		return brandName;
 	}

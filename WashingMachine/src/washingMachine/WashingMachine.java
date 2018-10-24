@@ -3,48 +3,37 @@ package washingMachine;
 public abstract class WashingMachine {
 	protected int	programme;
 	protected float	temperature;
-	protected int	rotationSpeed;
+	private int		rotationSpeed;
+	protected float	tempStep	= 0.5f;
 	
 	public WashingMachine() {
 		
 	}
 	
 	public WashingMachine(int programme, float temperature, int rotationSpeed) {
-		if (rotationSpeed <= 1000) {
-			this.rotationSpeed = (int) ((Math.round(rotationSpeed / 100.0)) * 100);
-		} else {
-			this.rotationSpeed = 0;
-		}
-		if (temperature <= 90) {
-			this.temperature = temperature;
-		} else {
-			this.temperature = 0;
-		}
-		if (programme <= 20) {
-			this.programme = programme;
-		} else {
-			this.programme = 0;
-		}
-		
+		this.rotationSpeed = this.setRotationSpeed(rotationSpeed);
+		this.temperature = this.setTemperature(temperature);
+		this.programme = this.setProgramme(programme);
 	}
 	
 	public int getProgramme() {
 		return programme;
 	}
 	
-	public void setProgramme(int programme) {
+	public int setProgramme(int programme) {
 		if (programme <= 20) {
 			this.programme = programme;
 		} else {
 			this.programme = 0;
 		}
+		return this.programme;
 	}
 	
 	public float getTemperature() {
 		return temperature;
 	}
 	
-	public void setTemperature(float temperature) {
+	public float setTemperature(float temperature) {
 		if (temperature - Math.floor(temperature) < 0.4) {
 			this.temperature = (float) Math.floor(temperature);
 		} else if (temperature - Math.floor(temperature) > 0.7) {
@@ -52,18 +41,20 @@ public abstract class WashingMachine {
 		} else {
 			this.temperature = (float) (Math.floor(temperature) + 0.5);
 		}
+		return this.temperature;
 	}
 	
 	public int getRotationSpeed() {
 		return rotationSpeed;
 	}
 	
-	public void setRotationSpeed(int rotationSpeed) {
+	public int setRotationSpeed(int rotationSpeed) {
 		if (rotationSpeed <= 1000) {
 			this.rotationSpeed = (int) ((Math.round(rotationSpeed / 100.0)) * 100);
 		} else {
 			this.rotationSpeed = 0;
 		}
+		return this.rotationSpeed;
 	}
 	
 	public int nextProgramme() {
@@ -82,7 +73,7 @@ public abstract class WashingMachine {
 	
 	public float tempUp() throws WashingMachineException {
 		if (this.temperature < 90) {
-			this.temperature += 0.5;
+			this.temperature += tempStep;
 			System.out.println("Current temperature: " + this.temperature + "\u00b0 C");
 			return this.temperature;
 		} else {
@@ -92,7 +83,7 @@ public abstract class WashingMachine {
 	
 	public float tempDown() throws WashingMachineException {
 		if (this.temperature > 0) {
-			this.temperature -= 0.5;
+			this.temperature -= tempStep;
 			System.out.println("Current temperature: " + this.temperature + "\u00b0C");
 			return this.temperature;
 		} else {

@@ -5,6 +5,13 @@ public class Beko extends WashingMachine {
 	
 	public Beko() {
 		this.brandName = WashingMachineNames.BEKO.getBrand();
+		this.tempStep = 1.0f;
+	}
+	
+	public Beko(int programme, float temperature, int rotationSpeed) {
+		super(programme, temperature, rotationSpeed);
+		this.brandName = WashingMachineNames.BEKO.getBrand();
+		this.tempStep = 1.0f;
 	}
 	
 	public String getBrandName() {
@@ -12,25 +19,13 @@ public class Beko extends WashingMachine {
 	}
 	
 	@Override
-	public float tempUp() throws WashingMachineException {
-		if (this.temperature < 90) {
-			this.temperature += 1;
-			System.out.println("Current temperature: " + this.temperature + "\u00b0 C");
-			return this.temperature;
+	public float setTemperature(float temperature) {
+		if (temperature <= 90) {
+			this.temperature = Math.round(temperature);
 		} else {
-			throw new WashingMachineException("The temperature is already at maximum");
+			this.temperature = 0;
 		}
-	}
-	
-	@Override
-	public float tempDown() throws WashingMachineException {
-		if (this.temperature > 0) {
-			this.temperature -= 1;
-			System.out.println("Current temperature: " + this.temperature + "\u00b0C");
-			return this.temperature;
-		} else {
-			throw new WashingMachineException("The temperature is already at minimum");
-		}
+		return this.temperature;
 	}
 	
 }
