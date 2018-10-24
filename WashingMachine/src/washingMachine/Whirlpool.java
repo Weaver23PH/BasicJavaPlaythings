@@ -5,6 +5,7 @@ public class Whirlpool extends WashingMachine {
 	
 	public Whirlpool() {
 		this.brandName = WashingMachineNames.WHIRLPOOL.getBrand();
+		this.maxProgramme = 25;
 	}
 	
 	public Whirlpool(int programme, float temperature, int rotationSpeed) {
@@ -21,21 +22,4 @@ public class Whirlpool extends WashingMachine {
 		this.programme = this.setProgramme(programme);
 	}
 	
-	@Override
-	public int setProgramme(int programme) {
-		if (programme <= 25) {
-			this.programme = programme;
-		} else {
-			this.programme = 0;
-		}
-		return this.programme;
-	}
-	
-	@Override
-	public int nextProgramme() {
-		if (this.programme < 25) {
-			this.programme++;
-		}
-		return this.programme;
-	}
 }

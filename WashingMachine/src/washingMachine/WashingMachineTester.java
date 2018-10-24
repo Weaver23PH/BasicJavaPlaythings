@@ -11,7 +11,6 @@ public class WashingMachineTester {
 		Amica amica1 = new Amica();
 		Beko beko1 = new Beko();
 		Whirlpool whirlpool1 = new Whirlpool();
-		Whirlpool whirlpool2 = new Whirlpool(25, 10.0f, 500);
 		
 		allAGD.add(whirlpool1);
 		allAGD.add(beko1);
@@ -58,17 +57,29 @@ public class WashingMachineTester {
 		
 	}
 	
+	/**
+	 * @param equipmentList
+	 * @return This method displays the contents of the list
+	 */
 	static public void printAllMachines(List<WashingMachine> equipmentList) {
 		equipmentList.stream()
 				.forEach(System.out::println);
 	}
 	
+	/**
+	 * @param equipmentList
+	 * @return This method sorts the contents of the list and prints them
+	 */
 	static public void sortAllMachines1(List<WashingMachine> equipmentList) {
 		equipmentList.stream()
 				.sorted(Comparator.comparing(WashingMachine::getBrandName))
 				.forEach(WashingMachine::showStatus);
 	}
 	
+	/**
+	 * @param equipmentList
+	 * @return This method sorts the contents of the list and prints them
+	 */
 	static public void sortAllMachines2(List<WashingMachine> equipmentList) {
 		equipmentList.stream()
 				.sorted((wm1, wm2) -> wm1.getBrandName()

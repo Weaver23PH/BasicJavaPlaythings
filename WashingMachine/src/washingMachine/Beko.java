@@ -20,7 +20,7 @@ public class Beko extends WashingMachine {
 	
 	@Override
 	public float setTemperature(float temperature) {
-		if (temperature <= 90) {
+		if (temperature <= maxTemp) {
 			this.temperature = Math.round(temperature);
 		} else {
 			this.temperature = 0;
