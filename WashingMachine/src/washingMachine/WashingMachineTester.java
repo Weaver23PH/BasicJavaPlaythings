@@ -89,4 +89,5 @@ public class WashingMachineTester {
 				.forEach(WashingMachine::showStatus);
 		
 	}
+	
 }

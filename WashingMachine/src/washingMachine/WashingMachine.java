@@ -10,8 +10,8 @@ public abstract class WashingMachine {
 	private int			rotationSpeed;
 	float				tempStep			= 0.5f;
 	int					maxProgramme		= 20;
-	final private int	maxRotationSpeed	= 1000;
-	final float			maxTemp				= 90.0f;
+	private final int	MAX_ROTATION_SPEED	= 1000;
+	final float			MAX_TEMP			= 90.0f;
 	
 	public WashingMachine() {
 		
@@ -57,7 +57,7 @@ public abstract class WashingMachine {
 	 *         according to input
 	 */
 	public float setTemperature(float temperature) {
-		if (temperature <= maxTemp) {
+		if (temperature <= MAX_TEMP) {
 			if (temperature - Math.floor(temperature) < 0.4) {
 				this.temperature = (float) Math.floor(temperature);
 			} else if (temperature - Math.floor(temperature) > 0.7) {
@@ -79,7 +79,7 @@ public abstract class WashingMachine {
 	 *         according to input
 	 */
 	public int setRotationSpeed(int rotationSpeed) {
-		if (rotationSpeed <= maxRotationSpeed) {
+		if (rotationSpeed <= MAX_ROTATION_SPEED) {
 			this.rotationSpeed = (int) ((Math.round(rotationSpeed / 100.0)) * 100);
 		} else {
 			this.rotationSpeed = 0;
@@ -139,7 +139,7 @@ public abstract class WashingMachine {
 	 * @return This method increases rotation speed by 100
 	 */
 	public int rotationSpeeedUp() {
-		if (this.rotationSpeed < maxRotationSpeed) {
+		if (this.rotationSpeed < MAX_ROTATION_SPEED) {
 			this.rotationSpeed += 100;
 		} else {
 			this.rotationSpeed = 0;
